@@ -72,7 +72,7 @@ class UserController extends Controller
     public function show($id)
     {
         $user = User::find($id);
-        return view('users.show', compact($user));
+        return view('users.show', compact('user'));
     }
 
     /**
@@ -85,7 +85,7 @@ class UserController extends Controller
     {
         $user = User::find($id);
         $roles = Role::pluck('name', 'name')->all();
-        $userRole = $user->$roles->pluck('name', 'name')->all();
+        $userRole = $user->roles->pluck('name', 'name')->all();
 
         return view('users.edit', compact('user', 'roles', 'userRole'));
     }
@@ -129,6 +129,7 @@ class UserController extends Controller
      */
     public function destroy($id)
     {
+        dd($id);
         User::find($id)->delete();
         return redirect()->route('users.index')
                         ->with('success', 'User deleted successfully');

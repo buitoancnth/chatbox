@@ -43,13 +43,15 @@
                 <td>
                     <div class="list-inline">
                         <a class="btn btn-info list-inline-item" href="{{ route('users.show',$user->id) }}">Show</a>
-                        <a class="btn btn-primary list-inline-item" href="{{ route('users.edit',$user->id) }}">Edit</a>
+                        @can('user-edit')
+                            <a class="btn btn-primary list-inline-item" href="{{ route('users.edit',$user->id) }}">Edit</a>
+                        @endcan
                         @can('user-delete')
                         <div class="list-inline-item">
                             <form method="POST" action="{{url('/users', ['id' => $user->id])}}">
                                 @csrf
                                 <button class="btn btn-danger" type="submit" onclick="return confirm('are you sure?')">Delete</button>
-                                @method('delete')
+                                @method('DELETE')
                             </form>
                         </div>
                         @endcan
