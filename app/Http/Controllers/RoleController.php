@@ -14,8 +14,8 @@ class RoleController extends Controller
     {
         $this->middleware('permission:role-list');
         $this->middleware('permission:role-create', ['only' => ['create', 'store']]);
-        $this->middleware('permission:role-update', ['only' => ['edit', 'update']]);
-        $this->middleware('permission:role-destroy', ['only' => ['destroy']]);
+        $this->middleware('permission:role-edit', ['only' => ['edit', 'update']]);
+        $this->middleware('permission:role-delete', ['only' => ['destroy']]);
     }
     /**
      * Display a listing of the resource.
@@ -84,11 +84,11 @@ class RoleController extends Controller
     public function edit($id)
     {
         $role = Role::find($id);
-        $permission = Permission::get();
-        $rolePermission = DB::table("roles_has_permission")->where("role_has_permissions.role_id", $id)
+        $permissions = Permission::get();
+        $rolePermission = DB::table("role_has_permissions")->where("role_has_permissions.role_id", $id)
                             ->pluck('role_has_permissions.permission_id', 'role_has_permissions.permission_id')
                             ->all();
-        return view('roles.edit', compact('role', 'permission', 'rolePermission'));
+        return view('roles.edit', compact('role', 'permissions', 'rolePermission'));
     }
 
     /**
@@ -100,16 +100,16 @@ class RoleController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $this->validate($request, [
-            'name' => 'required',
-            'permission' => 'required',
-        ]);
+        // $this->validate($request, [
+        //     'name' => 'required',
+        // ]);
 
         $role = Role::find($id);
-        $role->name = $request->input('name');
-        $role->save();
+        // $role->name = $request->input('name');
+        // dd($request->all());
+        // $role->update();
 
-        $role->syncPermission($request->input('permission'));
+        $role->syncPermissions($request->input('permission'));
 
         return redirect()->route('roles.index')
                         ->with('success', 'role updated successfully');

@@ -14,14 +14,17 @@ class PermissionTableSeeder extends Seeder
     public function run()
     {
         $permissions = [
+            'management-roles',
             'role-list',
             'role-create',
             'role-edit',
             'role-delete',
+            'management-products',
             'product-list',
             'product-create',
             'product-edit',
             'product-delete',
+            'management-users',
             'user-list',
             'user-create',
             'user-edit',
@@ -29,18 +32,19 @@ class PermissionTableSeeder extends Seeder
         ];
 
         $permissions_client = [
-            'role-list',
-            'product-list',
-            'user-list'
+            
         ];
 
         $permissions_admin = [
+            'management-roles',
             'role-list',
             'role-create',
             'role-edit',
+            'management-products',
             'product-list',
             'product-create',
             'product-edit',
+            'management-users',
             'user-list',
             'user-create',
             'user-edit'

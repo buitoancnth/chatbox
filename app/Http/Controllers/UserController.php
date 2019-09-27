@@ -14,7 +14,7 @@ class UserController extends Controller
         $this->middleware('permission:user-list');
         $this->middleware('permission:user-create', ['only' => ['create', 'store']]);
         $this->middleware('permission:user-edit', ['only' => ['edit', 'update']]);
-        $this->middleware('permission:user-destroy', ['only' => ['destroy']]);
+        $this->middleware('permission:user-delete', ['only' => ['destroy']]);
     }
     /**
      * Display a listing of the resource.
@@ -23,6 +23,7 @@ class UserController extends Controller
      */
     public function index(Request $request)
     {
+        // dd(auth()->user()->roles->pluck('name'));
         $data = User::orderBy('id', 'DESC')->paginate(5);
         return view('users.index', compact('data'))->with('i', ($request->input('page', 1) - 1) * 5);
     }
@@ -129,7 +130,6 @@ class UserController extends Controller
      */
     public function destroy($id)
     {
-        dd($id);
         User::find($id)->delete();
         return redirect()->route('users.index')
                         ->with('success', 'User deleted successfully');
