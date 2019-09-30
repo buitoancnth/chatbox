@@ -11,6 +11,8 @@ $fa-font-path: '../webfonts';
 @import '~@fortawesome/fontawesome-free/scss/fontawesome.scss';
 @import '~@fortawesome/fontawesome-free/scss/solid.scss';
 
+@import 'frontend.scss';
+
 body {
     background-color: #d5e1e8;
     // background-image: url("/autom.jpg");

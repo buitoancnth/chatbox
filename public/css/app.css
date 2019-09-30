@@ -16491,6 +16491,27 @@ readers do not read off random characters that represent icons */
   font-weight: 900;
 }
 
+.chat-box .card-footer i {
+  font-size: 16px;
+  margin-right: auto;
+  margin-left: auto;
+  vertical-align: middle;
+}
+
+.setting i {
+  margin-right: 10px;
+  font-size: 16px;
+}
+
+.setting a {
+  text-decoration: none;
+}
+
+.setting .card-header {
+  font-size: 20px;
+  font-weight: 700;
+}
+
 body {
   background-color: #d5e1e8;
   opacity: 0.9;

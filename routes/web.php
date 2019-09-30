@@ -22,13 +22,20 @@ Route::get('/index' ,'FirebaseController@index', function () {
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+Route::patch('/edit-profile', 'UserController@editProfile')->name('edit-profile');
 
 Route::group(['middleware' => ['auth']], function () {
     Route::resource('users', 'UserController');
     Route::resource('roles', 'RoleController');
     Route::resource('products', 'ProductController');
+    
 });
 
+// user setting
+Route::group(['middleware' => 'auth', 'prefix' => 'setting'], function () {
+    Route::get('/', 'SettingController@index')->name('setting.index'); 
+    // Route::patch('update', 'SettingController@update')->name('setting.update'); 
+});
 // Route::resource('users', 'UserController');
 // Route::resource('roles', 'RoleController');
 // Route::resource('products', 'ProductController');

@@ -101,15 +101,16 @@ class UserController extends Controller
      */
     public function update(Request $request, $id)
     {
+        $input = $request->all();
         $this->validate($request, [
             'name' => 'required',
             'email'=> 'required|email|unique:users,email,'.$id,
+            'password' => 'same:confirm-password'.($input['password'] !== null ? '|min:8' : ''),
             'roles' => 'required',
         ]);
         
-        $input = $request->all();
         if(!empty($input['password'])){
-            $input['password'] = Hash::make($input('password'));
+            $input['password'] = Hash::make($input['password']);
         }else{
             $input = Arr::except($input, array('password'));
         }
@@ -133,5 +134,27 @@ class UserController extends Controller
         User::find($id)->delete();
         return redirect()->route('users.index')
                         ->with('success', 'User deleted successfully');
+    }
+
+    public function editProfile(Request $request){
+        $input = $request->all();
+        $user = auth()->user();
+        $id = auth()->user()->id;
+        
+        $this->validate($request, [
+            'name' => 'required',
+            'email' => 'required|unique:users,email,'.$id,
+            'password' => 'same:confirm-password'.($input['password'] !== null ? '|min:8' : '' )
+        ]);
+
+        if(isset($input['password'])){
+            $input['password'] = Hash::make($input['password']);
+        }else{
+            $input = Arr::except($input, ['password']);
+        }
+        $user->update($input);
+
+        return redirect()->route('setting.index')
+                        ->with('success', 'Updated profile sucessfuly !');
     }
 }

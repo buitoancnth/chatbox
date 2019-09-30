@@ -45,13 +45,11 @@
                         scrollTop: $('#scollDiv')[0].scrollHeight
                     }, 0);
                 });
-
-
             });
         </script>
     @endpush
     
-    <div class="row">
+    <div class="row chat-box">
         <div class="col-md-6">
             <div class="row">
                 <div class="col-md-12">
@@ -84,13 +82,15 @@
                         </div>
                         <div class="card-footer">
                             <form>
-                                <div class="input-group input-group-sm">
-                                    <span class="input-group-addon">
-                                        <i class="fas fa-pencil-alt"></i>
-                                    </span>
+                                <div class="input-group mb-3">
+                                    <div class="input-group-prepend">
+                                        <div class="input-group-text">
+                                            <i class="fas fa-pencil-alt"></i>
+                                        </div>
+                                    </div>
                                     <input type="text" class="form-control" id="txtText"
                                         placeholder="Type your message here ..">
-                                    <span class="input-group-btn">
+                                    <span class="input-group-append">
                                         <button class="btn btn-primary" type="submit"
                                             id="btnSend">Send</button>
                                     </span>
@@ -118,8 +118,8 @@
                 <source src="{{ url('/') }}/audio.mp3" type="audio/mp3">
                 Your browser does not support the audio element.
             </audio>
-            <br/><br/><h2>Lão Hạc(part 1)</h2>
-            <iframe width="600" height="400" src="https://www.youtube.com/embed/er_lC05fPwA" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            <br/><br/><h2>Nhạc Bay</h2>
+            <iframe width="600" height="400" src="https://www.youtube.com/embed/AoqG7100gdI" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
             <br/><br/><h2>Lão Hạc(part 2)</h2>
             <iframe width="600" height="400" src="https://www.youtube.com/embed/5V39cdKw9fc" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
             <iframe width="600" height="400" src="https://www.youtube.com/embed/1wm0vfPoO1Q" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
@@ -133,7 +133,14 @@
                 {{-- <video autoplay loop>
                     <source src="{{ url('/') }}/IMG_2755.mp4" type="video/mp4">
                 </video> --}}
+                <video controls>
+                    {{-- <source src="{{ url('/') }}/12_phut.MP4" type="video/mp4"> --}}
+                </video>
             </div>
+
+            <video autoplay loop>
+                {{-- <source src="{{ url('/') }}/12_phut.MP4" type="video/mp4"> --}}
+            </video>
         </div>
         
     </div>
