@@ -35,7 +35,7 @@
                     <label class="badge badge-success">{{ $v }}</label>
                 @endforeach
             @else
-            	dont have role
+            	<p>dont have role</p>
             @endif
         </div>
     </div>

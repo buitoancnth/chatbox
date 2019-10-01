@@ -11,11 +11,8 @@
             </div>
         </div>
     </div>
-    @if ($message = Session::get('success'))
-    <div class="alert alert-success">
-        <p>{{ $message }}</>
-    </div>
-    @endif
+
+    @include('shared.success-form')
 
     <table class="table table-bordered bg-white">
         <tr>
@@ -61,4 +58,6 @@
             </tr>
         @endforeach
     </table>
+
+    {{ $data->links() }}
 @endsection

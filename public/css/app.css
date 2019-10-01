@@ -16498,6 +16498,10 @@ readers do not read off random characters that represent icons */
   vertical-align: middle;
 }
 
+.chat-box a.show_user {
+  text-decoration: none;
+}
+
 .setting i {
   margin-right: 10px;
   font-size: 16px;
@@ -16512,9 +16516,9 @@ readers do not read off random characters that represent icons */
   font-weight: 700;
 }
 
-body {
-  background-color: #d5e1e8;
-  opacity: 0.9;
+.setting .profile-header-img {
+  width: 200px;
+  height: 200px;
 }
 
 tr.chat td {
@@ -16540,12 +16544,13 @@ tr.chat td:nth-child(2) {
   overflow-y: scroll;
 }
 
-.container {
-  margin-top: 20px;
-}
-
 .videoBG {
   /* position: fixed; z-index: 0; top: 0px; left: 0px; height: 3279px; width: 1903px; */
   /* opacity: 0.2; */
+}
+
+body {
+  background-color: #d5e1e8;
+  opacity: 0.9;
 }
 

@@ -1,21 +1,3 @@
-@extends('layouts.app')
-
-
-@section('content')
-<div class="row">
-    <div class="col-lg-12 margin-tb">
-        <div class="float-right">
-            <h2>Edit New User</h2>
-        </div>
-        <div class="float-left">
-            <a class="btn btn-primary" href="{{ route('users.index') }}"> Back</a>
-        </div>
-    </div>
-</div>
-
-@include('shared.errors-form')
-
-{!! Form::model($user, ['method' => 'PATCH','route' => ['users.update', $user->id]]) !!}
 <div class="row">
     <div class="col-xs-12 col-sm-12 col-md-12">
         <div class="form-group">
@@ -44,14 +26,10 @@
     <div class="col-xs-12 col-sm-12 col-md-12">
         <div class="form-group">
             <strong>Role:</strong>
-            {!! Form::select('roles[]', $roles,$userRole, array('class' => 'form-control','multiple')) !!}
+            {!! Form::select('roles[]', $roles, [], array('class' => 'form-control','multiple')) !!}
         </div>
     </div>
     <div class="col-xs-12 col-sm-12 col-md-12 text-center">
         <button type="submit" class="btn btn-primary">Submit</button>
     </div>
 </div>
-{!! Form::close() !!}
-
-
-@endsection

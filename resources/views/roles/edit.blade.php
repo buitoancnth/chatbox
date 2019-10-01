@@ -5,7 +5,7 @@
 <div class="row">
     <div class="col-lg-12 margin-tb">
         <div class="float-right">
-            <h2>Edit <i class="far fa-critical-role"></i></h2>
+            <h2 class="font-weight-bold">Edit<i class="fas fa-edit ml-1"></i></h2>
         </div>
         <div class="float-left">
             <a class="btn btn-primary" href="{{ route('roles.index') }}"> Back</a>
@@ -13,17 +13,7 @@
     </div>
 </div>
 
-
-@if (count($errors) > 0)
-    <div class="alert alert-danger mt-1">
-        <strong>Whoops!</strong> There were some problems with your input.<br><br>
-        <ul>
-            @foreach ($errors->all() as $error)
-                <li>{{ $error }}</li>
-            @endforeach
-        </ul>
-    </div>
-@endif
+@include('shared.errors-form')
 
 {!! Form::model($role, ['method' => 'PATCH','route' => ['roles.update', $role->id]]) !!}
 <div class="row">

@@ -14,10 +14,10 @@ class UserTableSeeder extends Seeder
      */
     public function run()
     {
-        $superAdmin = User::create(['name'=>'Super Admin', 'email'=>'superadmin@gmail.com','password'=>Hash::make('12345678')]);
+        $superAdmin = User::create(['name'=>'Super Admin', 'email'=>'superadmin@gmail.com','gender' => '1','password'=>Hash::make('12345678')]);
         $superAdmin->assignRole('Super Admin');
 
-        $admin = User::create(['name'=>'Admin', 'email'=>'admin@gmail.com','password'=>Hash::make('12345678')]);
+        $admin = User::create(['name'=>'Admin', 'email'=>'admin@gmail.com','gender' => '0', 'password'=>Hash::make('12345678')]);
         $admin->assignRole('Admin');
     }
 }

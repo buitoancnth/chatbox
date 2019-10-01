@@ -12,7 +12,7 @@
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('index');
 });
 
 Route::get('/index' ,'FirebaseController@index', function () {
@@ -21,14 +21,13 @@ Route::get('/index' ,'FirebaseController@index', function () {
 
 Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
+// Route::get('/home', 'HomeController@index')->name('home');
 Route::patch('/edit-profile', 'UserController@editProfile')->name('edit-profile');
 
 Route::group(['middleware' => ['auth']], function () {
     Route::resource('users', 'UserController');
     Route::resource('roles', 'RoleController');
     Route::resource('products', 'ProductController');
-    
 });
 
 // user setting

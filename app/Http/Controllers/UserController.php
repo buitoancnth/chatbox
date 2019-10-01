@@ -12,7 +12,7 @@ use Spatie\Permission\Models\Role;
 class UserController extends Controller
 {
     function __construct(){
-        $this->middleware('permission:user-list');
+        $this->middleware('permission:user-list', ['only' => ['index']]);
         $this->middleware('permission:user-create', ['only' => ['create', 'store']]);
         $this->middleware('permission:user-edit', ['only' => ['edit', 'update']]);
         $this->middleware('permission:user-delete', ['only' => ['destroy']]);
@@ -57,7 +57,7 @@ class UserController extends Controller
 
         $input = $request->all();
         $input['password'] = Hash::make($input['password']);
-
+        dd($input);
         $user = User::create($input);
 
         $user->assignRole($request->input('roles'));
@@ -146,7 +146,13 @@ class UserController extends Controller
             'email' => 'required|unique:users,email,'.$id,
             'password' => 'same:confirm-password'.($input['password'] !== null ? '|min:8' : '' )
         ]);
-
+        
+        if(isset($input['avatar'])){
+            $avatarName = $user->id.'_avatar'.time().'.'.request()->avatar->getClientOriginalExtension();
+            $request->avatar->storeAs('avatars',$avatarName);
+            $input['avatar'] = $avatarName;
+        }
+        
         if(isset($input['password'])){
             $input['password'] = Hash::make($input['password']);
         }else{

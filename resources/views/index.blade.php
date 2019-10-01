@@ -13,16 +13,18 @@
                     var result =text1.replace(exp2, '$1<a target="_blank" href="http://$2">$2</a>');
                     return result;
                 }
-                var myFirebase = new Firebase('https://fireb-b8686.firebaseio.com/');
+                var myFirebase = new Firebase('https://fir-253807.firebaseio.com/');
                 var ids_admin_group = [1,2];
                 var name = $('#name_user').val();
                 var role_id = $('#role_id').val();
+                var user_id = $('#user_id').val();
+                var current_user = $('#current_user').val();
 
                 $('#btnSend').on('click', function (e) {
                     e.preventDefault();
                     var text = $('#txtText').val();
                     if (text) {
-                        myFirebase.push({name: name, text: text, role_id: role_id}); 
+                        myFirebase.push({name: name, text: text, role_id: role_id, user_id: user_id}); 
                         $('#txtText').val('');
                     }
                 });
@@ -30,14 +32,20 @@
                 myFirebase.on('child_added', function (snapshot){
                     var message = snapshot.val();
                     var style = '';
+                    var name_user = message.name;
                     var role_id = parseInt(message.role_id);
+                    var user_id = parseInt(message.user_id);
                     if(ids_admin_group.includes(role_id)){
                         style = 'style="color:' + ' blue"';
                     }
+                    if(user_id){
+                        name_user = '<a href = "/users/'+ user_id +'" class="show_user">'+ message.name +'</a>';
+                    }   
                     var html = 
                         '<tr class="list-inline chat">' + 
-                        '<td class="list-inline-item" '+ style +'><i class="fas fa-user"></i> ' + message.name + ': </td>' + 
-                        '<td class="list-inline-item">' + convert(message.text) + '</td>' + 
+                            '<td class="list-inline-item name_chat" '+ style +'><i class="fas fa-user"></i> ' + name_user + ': </td>' + 
+                            '<td class="list-inline-item content_chat">' + convert(message.text) + '</td>' + 
+                            '<td class="list-inline-item more_option"></td>' +
                         '</tr>';
                     $('#messageContainer tr:last').after(html);
                     
@@ -69,6 +77,8 @@
                                 </span>
                                 <input id="name_user" type="hidden" value="{{ Auth::user()->name ?? 'Guest' }}">
                                 <input id="role_id" type="hidden" value="{{ (Auth::user() != null) ? Auth::user()->roles()->pluck('id')->first() : 'null' }}">
+                                <input id="user_id" type="hidden" value="{{ (Auth::user() != null) ? Auth::user()->id : 'null' }}">
+                                <input id="current_user" type="hidden" value="{{ (Auth::user() != null) ? true : false }}">
                             </div>
                         </div>
                         <div class="card-body">
@@ -118,13 +128,13 @@
                 <source src="{{ url('/') }}/audio.mp3" type="audio/mp3">
                 Your browser does not support the audio element.
             </audio>
-            <br/><br/><h2>Nhạc Bay</h2>
-            <iframe width="600" height="400" src="https://www.youtube.com/embed/AoqG7100gdI" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-            <br/><br/><h2>Lão Hạc(part 2)</h2>
-            <iframe width="600" height="400" src="https://www.youtube.com/embed/5V39cdKw9fc" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-            <iframe width="600" height="400" src="https://www.youtube.com/embed/1wm0vfPoO1Q" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-            {{-- <iframe width="560" height="315" src="https://www.youtube.com/embed/cpcKEfaglWk" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe> --}}
-            {{-- <iframe width="560" height="315" src="https://www.youtube.com/embed/wSxijea-o_M" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe> --}}
+            <br/><br/><h2>Tình Anh Em</h2>
+            <iframe width="600" height="400" src="https://www.youtube.com/embed/ACXuP5zn_eI" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            {{-- <br/><br/><h2>Lão Hạc(part 2)</h2> --}}
+            {{-- <iframe width="600" height="400" src="https://www.youtube.com/embed/5V39cdKw9fc" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe> --}}
+            {{-- <iframe width="600" height="400" src="https://www.youtube.com/embed/1wm0vfPoO1Q" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe> --}}
+            {{-- <iframe width="560" height="315" src="https://www.youtube.com/embed/cpcKEfaglWk" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe> --}} 
+            {{-- <iframe width="560" height="315" src="https://www.youtube.com/embed/wSxijea-o_M" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
             {{-- <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#collapseExample">
                 Gái Xinh
             </button> --}}

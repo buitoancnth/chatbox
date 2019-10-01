@@ -9,9 +9,19 @@
         </div>
 
         <div class="col-md-8">
+            
             <div class="card">
                 <div class="card-header bg-primary">Information</div>
                 <div class="card-body">
+                <div class="row justify-content-center">
+
+                    <div class="profile-header-container">
+                        <div class="profile-header-img">
+                            <img class="rounded-circle" src="{{ asset('storage/avatars') }}/{{ $current_user->avatar }}" />
+                        </div>
+                    </div>
+
+                </div>
                 {!! Form::model($current_user, ['method'=>'PATCH', 'route' => 'edit-profile']) !!}
                     <div class="form-group">
                         <strong>Name:</strong>

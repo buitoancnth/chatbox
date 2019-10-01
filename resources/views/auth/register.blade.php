@@ -40,6 +40,23 @@
                         </div>
 
                         <div class="form-group row">
+                            <label for="gender" class="col-md-4 col-form-label text-md-right">Gender</label>
+
+                            <div class="col-md-6">
+                                <select class="custom-select" id="inputGroupSelect01" name="gender">
+                                    <option value="0">Girl</option>
+                                    <option value="1" selected>Man</option>
+                                </select>
+
+                                @error('gender')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
                             <label for="password" class="col-md-4 col-form-label text-md-right">{{ __('Password') }}</label>
 
                             <div class="col-md-6">
