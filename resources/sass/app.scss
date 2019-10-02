@@ -8,9 +8,8 @@ $fa-font-path: '../webfonts';
 
 // Bootstrap
 @import '~bootstrap/scss/bootstrap';
-@import '~@fortawesome/fontawesome-free/scss/fontawesome.scss';
-@import '~@fortawesome/fontawesome-free/scss/solid.scss';
-
+@import 'node_modules/@fortawesome/fontawesome-free/scss/fontawesome.scss';
+@import 'node_modules/@fortawesome/fontawesome-free/scss/solid.scss';
 @import 'frontend.scss';
 
 body {

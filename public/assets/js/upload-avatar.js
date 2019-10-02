@@ -18,28 +18,7 @@ $(document).ready(function () {
     };
 
     browserURL("#imgInp", "#imgId");
-    var el = document.getElementById('demo-basic');
-    var vanilla = new Croppie(el, {
-        viewport: {
-            width: 200,
-            height: 200
-        },
-        boundary: {
-            width: 400,
-            height: 400
-        },
-        showZoomer: true,
-        enableOrientation: true
-    });
-    vanilla.bind({
-        url: 'assets/image/user.jpg',
-        // orientation: 4
-    });
-    //on button click
-    vanilla.result('blob').then(function (blob) {
-        // do something with cropped blob
-    });
-
+    
     $(".gambar").attr("src", "assets/image/user.jpg");
     var $uploadCrop,
         tempFilename,
@@ -56,7 +35,7 @@ $(document).ready(function () {
             }
             reader.readAsDataURL(input.files[0]);
         } else {
-            swal("Sorry - you're browser doesn't support the FileReader API");
+            console.log("Sorry - you're browser doesn't support the FileReader API");
         }
     }
 
@@ -72,7 +51,7 @@ $(document).ready(function () {
     });
     $('#cropImagePop').on('shown.bs.modal', function () {
         // alert('Shown pop');
-        $uploadCrop.croppie('bind', {
+        $uploadCrop.bind({
             url: rawImg
         }).then(function () {
             console.log('jQuery bind complete');
@@ -86,7 +65,7 @@ $(document).ready(function () {
         readFile(this);
     });
     $('#cropImageBtn').on('click', function (ev) {
-        $uploadCrop.croppie('result', {
+        $uploadCrop.result( {
             type: 'base64',
             format: 'jpeg',
             size: {

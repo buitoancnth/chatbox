@@ -16502,7 +16502,7 @@ readers do not read off random characters that represent icons */
   text-decoration: none;
 }
 
-.setting i {
+.setting .card i {
   margin-right: 10px;
   font-size: 16px;
 }
@@ -16580,13 +16580,18 @@ label.cabinet input.file {
 }
 
 figure figcaption {
-  position: absolute;
-  bottom: 0;
+  position: relative;
+  bottom: 27px;
   color: #fff;
   width: 100%;
   padding-left: 9px;
   padding-bottom: 5px;
   text-shadow: 0 0 10px #000;
+}
+
+.avatar {
+  width: 200px;
+  height: 200px;
 }
 
 body {

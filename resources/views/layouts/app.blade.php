@@ -17,7 +17,7 @@
     <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
     <script src='https://cdn.firebase.com/js/client/2.2.1/firebase.js'></script>  
-    {{-- <script src="https://cdnjs.cloudflare.com/ajax/libs/croppie/2.6.3/croppie.min.js"></script> --}}
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/croppie/2.6.3/croppie.min.js"></script>
     {{-- <script src="{{ asset('assets/js/upload-avatar.js') }}"></script> --}}
     <link href="{{ asset('css/welcome.css') }}" rel="stylesheet">
 

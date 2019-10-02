@@ -13,6 +13,18 @@
             <div class="card-header bg-primary">Information</div>
             <div class="card-body">
                 {!! Form::model($current_user, ['method'=>'PATCH', 'route' => 'edit-profile']) !!}
+                <div class="row">
+                    <div class="mx-auto col-lg-4 col-sm-12">
+                        <label class="cabinet avatar">
+                            <figure>
+                                <img src="" class="gambar img-responsive img-thumbnail" id="item-img-output" />
+                                <figcaption><i class="fas fa-camera"></i></figcaption>
+                            </figure>
+                            <input type="file" class="item-img file d-none" name="file_photo" />
+                        </label>
+                    </div>
+                </div>
+
                 <div class="form-group">
                     <strong>Name:</strong>
                     {!! Form::text('name', null, ['class' => 'form-control', 'placeholder'=>'Name']) !!}
@@ -39,33 +51,19 @@
         </div>
     </div>
 </div>
-        <div id="demo-basic"></div>
-
-<div class="container">
-    <div class="row">
-        <div class="col-xs-12">
-            <label class="cabinet center-block">
-                <figure>
-                    <img src="" class="gambar img-responsive img-thumbnail" id="item-img-output" />
-                    <figcaption><i class="fa fa-camera"></i></figcaption>
-                </figure>
-                <input type="file" class="item-img file center-block" name="file_photo" />
-            </label>
-        </div>
-    </div>
-</div>
-
 <div class="modal fade" id="cropImagePop" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
+                <h4 class="modal-title" id="myModalLabel">
+                        Edit Photo</h4>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
                         aria-hidden="true">&times;</span></button>
-                <h4 class="modal-title" id="myModalLabel">
-                    Edit Photo</h4>
+                
             </div>
             <div class="modal-body">
                 <div id="upload-demo" class="center-block"></div>
+                <div id="preview"></div>
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
