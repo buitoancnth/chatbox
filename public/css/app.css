@@ -16542,6 +16542,7 @@ tr.chat td:nth-child(2) {
   word-wrap: break-word;
   white-space: -moz-pre-wrap;
   white-space: pre-wrap;
+  margin-top: 6px;
 }
 
 #scollDiv {
@@ -16573,7 +16574,7 @@ label.cabinet input.file {
   margin-top: -30px;
 }
 
-#upload-demo {
+#upload-avatar {
   width: 250px;
   height: 250px;
   padding-bottom: 25px;
@@ -16592,6 +16593,31 @@ figure figcaption {
 .avatar {
   width: 200px;
   height: 200px;
+}
+
+#avatar_sm {
+  width: 50px;
+  height: 50px;
+}
+
+#avatar_chat_sm {
+  width: 35px;
+  height: 34px;
+  margin-right: 7px;
+}
+
+#navbarSupportedContent ul li {
+  margin-bottom: auto;
+  margin-top: auto;
+}
+
+a.show_user {
+  color: #000;
+}
+
+a.admin_control {
+  color: blue !important;
+  font-weight: 700;
 }
 
 body {

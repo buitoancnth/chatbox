@@ -17,10 +17,11 @@
                     <div class="mx-auto col-lg-4 col-sm-12">
                         <label class="cabinet avatar">
                             <figure>
-                                <img src="" class="gambar img-responsive img-thumbnail" id="item-img-output" />
+                                <img src="{{ asset('uploads/avatars').'/'.$current_user->avatar }}" class="gambar img-responsive img-thumbnail" id="item-img-output" />
                                 <figcaption><i class="fas fa-camera"></i></figcaption>
                             </figure>
-                            <input type="file" class="item-img file d-none" name="file_photo" />
+                            <input type="file" class="item-img file d-none" name="file_avatar" />
+                            <input type="hidden" class="item-img file d-none" name="avatar_name" id="avatar_name"/>
                         </label>
                     </div>
                 </div>
@@ -52,7 +53,7 @@
     </div>
 </div>
 <div class="modal fade" id="cropImagePop" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
+    <div class="modal-dialog modal-lg">
         <div class="modal-content">
             <div class="modal-header">
                 <h4 class="modal-title" id="myModalLabel">
@@ -62,8 +63,19 @@
                 
             </div>
             <div class="modal-body">
-                <div id="upload-demo" class="center-block"></div>
-                <div id="preview"></div>
+                <div class="row">
+                    <div class="col-md-6">
+                        <div id="upload-avatar" class="center-block"></div>
+                    </div>
+                    <div class="col-md-3">
+                        <img id="preview_square" src="" class="img-responsive img-thumbnail"></img>
+                        <h5 class="text-center mt-2">Preview</h5>
+                    </div>
+                    <div class="col-md-3">
+                        <img id="preview_circle" src="" class="img-thumbnail rounded-circle"></img>
+                        <h5 class="text-center mt-2">Preview</h5>
+                    </div>
+                </div>
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>

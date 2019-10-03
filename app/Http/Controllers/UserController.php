@@ -8,6 +8,7 @@ use App\User;
 use Illuminate\Support\Arr;
 use Illuminate\Http\Request;
 use Spatie\Permission\Models\Role;
+use Illuminate\Support\Facades\File;
 
 class UserController extends Controller
 {
@@ -131,7 +132,12 @@ class UserController extends Controller
      */
     public function destroy($id)
     {
-        User::find($id)->delete();
+        $user = User::find($id);
+        $user->delete();
+        $image_path_old = public_path() . "/uploads/avatars/" . $user->avatar;
+        if (File::exists($image_path)) {
+            unlink($image_path_old);
+        }
         return redirect()->route('users.index')
                         ->with('success', 'User deleted successfully');
     }
@@ -146,11 +152,21 @@ class UserController extends Controller
             'email' => 'required|unique:users,email,'.$id,
             'password' => 'same:confirm-password'.($input['password'] !== null ? '|min:8' : '' )
         ]);
-        
-        if(isset($input['avatar'])){
-            $avatarName = $user->id.'_avatar'.time().'.'.request()->avatar->getClientOriginalExtension();
-            $request->avatar->storeAs('avatars',$avatarName);
-            $input['avatar'] = $avatarName;
+
+        $image_path_old = public_path() . "/uploads/avatars/" . $user->avatar;
+        if (File::exists($image_path_old)) {
+            unlink($image_path_old);
+        }
+
+        if(isset($input['file_avatar'])){
+            $data = $input['avatar_name'];            
+            list($type, $data) = explode(';', $data);
+            list(, $data)      = explode(',', $data);
+            $data = base64_decode($data);
+            $image_name= $id.'.png';
+            $path = public_path() . "/uploads/avatars/" . $image_name;
+            file_put_contents($path, $data);
+            $input['avatar'] = $image_name;
         }
         
         if(isset($input['password'])){

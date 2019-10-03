@@ -63,11 +63,11 @@
                                 <li><a class="nav-link" href="{{ route('roles.index') }}">Manage Role</a></li>
                             @endcan
                             @can('management-products')
-                                <li><a class="nav-link" href="{{ route('products.index') }}">Manage Product</a></li>                                
+                                <li><a class="nav-link" href="">Manage Product</a></li>                                
                             @endcan
                             <li class="nav-item dropdown">
                                 <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                                    {{ Auth::user()->name }} <span class="caret"></span>
+                                    <img src="{{ asset('uploads/avatars').'/'.Auth::user()->avatar }} " alt="{{ Auth::user()->name }}" class="rounded-circle" id="avatar_sm"><span class="caret"></span>
                                 </a>
 
                                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">

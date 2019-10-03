@@ -5,6 +5,28 @@
         <!-- Scripts -->
         <script type="text/javascript">
             $(document).ready(function () {
+                // function UrlExists(urlToFile) {
+                //     var xhr = new XMLHttpRequest();
+                //     xhr.open('HEAD', urlToFile, false);
+                //     xhr.send();
+
+                //     if (xhr.status == "404") {
+                //         return false;
+                //     } else {
+                //         return true;
+                //     }
+                // }
+                // function UrlExists(url) {
+                //     // filename = this.trim();
+                    
+                //     var response = jQuery.ajax({
+                //         url: url,
+                //         type: 'HEAD',
+                //         async: false
+                //     }).status;	
+                    
+                //     return (response != "200") ? false : true;
+                // }
                 function convert(text)
                 {
                     var exp = /(\b(https?|ftp|file):\/\/[-A-Z0-9+&@#\/%?=~_|!:,.;]*[-A-Z0-9+&@#\/%=~_|])/ig;
@@ -18,6 +40,7 @@
                 var name = $('#name_user').val();
                 var role_id = $('#role_id').val();
                 var user_id = $('#user_id').val();
+                // var user_avatar = $('#user_avatar').val();
                 var current_user = $('#current_user').val();
 
                 $('#btnSend').on('click', function (e) {
@@ -35,15 +58,29 @@
                     var name_user = message.name;
                     var role_id = parseInt(message.role_id);
                     var user_id = parseInt(message.user_id);
+                    // var user_avatar = message.user_avatar;
+                    // console.log(message);
                     if(ids_admin_group.includes(role_id)){
-                        style = 'style="color:' + ' blue"';
+                        // $('a.show_user').addClass('admin_control');
+                        style = 'style="color: blue !important"';
                     }
+
+                    var url = "uploads/avatars/user.jpg";
+
                     if(user_id){
-                        name_user = '<a href = "/users/'+ user_id +'" class="show_user">'+ message.name +'</a>';
-                    }   
+                        var name_user = '<a href = "/users/'+ user_id +'" class="show_user" '+ style + '>' + message.name +'</a>';
+                        var url = "uploads/avatars/"+user_id+'.png';
+                        // if(!UrlExists(url)){
+                        //     var url = "uploads/avatars/user.jpg";
+                        // }
+                        
+
+                    }
+                    var avatar = '<img src="'+ url +'" class="rounded-circle" id="avatar_chat_sm">'; 
+
                     var html = 
                         '<tr class="list-inline chat">' + 
-                            '<td class="list-inline-item name_chat" '+ style +'><i class="fas fa-user"></i> ' + name_user + ': </td>' + 
+                            '<td class="list-inline-item name_chat">' + avatar + name_user + ': </td>' + 
                             '<td class="list-inline-item content_chat">' + convert(message.text) + '</td>' + 
                             '<td class="list-inline-item more_option"></td>' +
                         '</tr>';
@@ -78,6 +115,7 @@
                                 <input id="name_user" type="hidden" value="{{ Auth::user()->name ?? 'Guest' }}">
                                 <input id="role_id" type="hidden" value="{{ (Auth::user() != null) ? Auth::user()->roles()->pluck('id')->first() : 'null' }}">
                                 <input id="user_id" type="hidden" value="{{ (Auth::user() != null) ? Auth::user()->id : 'null' }}">
+                                <input id="user_avatar" type="hidden" value="{{ (Auth::user() != null) ? Auth::user()->avatar : 'null' }}">
                                 <input id="current_user" type="hidden" value="{{ (Auth::user() != null) ? true : false }}">
                             </div>
                         </div>
@@ -129,7 +167,7 @@
                 Your browser does not support the audio element.
             </audio>
             <br/><br/><h2>Tình Anh Em</h2>
-            <iframe width="600" height="400" src="https://www.youtube.com/embed/ACXuP5zn_eI" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            <iframe width="100%" height="400px" src="https://www.youtube.com/embed/ACXuP5zn_eI" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
             {{-- <br/><br/><h2>Lão Hạc(part 2)</h2> --}}
             {{-- <iframe width="600" height="400" src="https://www.youtube.com/embed/5V39cdKw9fc" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe> --}}
             {{-- <iframe width="600" height="400" src="https://www.youtube.com/embed/1wm0vfPoO1Q" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe> --}}
