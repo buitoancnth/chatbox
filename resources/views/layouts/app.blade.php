@@ -24,7 +24,9 @@
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     <link href="{{ asset('assets/css/croppie.css') }}" rel="stylesheet">
+    <!-- bootstrap 4.x is supported. You can also use the bootstrap css 3.3.x versions -->
     @stack('head')
+    @stack('photos-head')
 </head>
 <body>
     <div id="app">
@@ -62,9 +64,12 @@
                             @can('management-roles')
                                 <li><a class="nav-link" href="{{ route('roles.index') }}">Manage Role</a></li>
                             @endcan
-                            @can('management-products')
-                                <li><a class="nav-link" href="">Manage Product</a></li>                                
-                            @endcan
+                            {{-- @can('management-images') --}}
+                                <li><a class="nav-link" href="">Manage Images</a></li>                                
+                            {{-- @endcan --}}
+                            {{-- @can('management-videos') --}}
+                                <li><a class="nav-link" href="">Manage Images</a></li>                                
+                            {{-- @endcan --}}
                             <li class="nav-item dropdown">
                                 <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                                     <img src="{{ asset('uploads/avatars').'/'.Auth::user()->avatar }} " alt="{{ Auth::user()->name }}" class="rounded-circle" id="avatar_sm"><span class="caret"></span>

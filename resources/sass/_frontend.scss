@@ -43,23 +43,33 @@ tr.chat {
     }
 
     td:first-child {
-        font-weight: bold;
-        max-width: 400px;
+        #content-chat {
+            font-weight: 600;
+        }
+        // font-weight: bold;
+        // max-width: 400px;
         // width: auto;
     }
 
     td:nth-child(2) {
-        max-width: 400px;
-        word-wrap: break-word;
-        white-space: -moz-pre-wrap;
-        white-space: pre-wrap;
-        margin-top: 6px;
+        // max-width: 400px;
+        // word-wrap: break-word;
+        // white-space: -moz-pre-wrap;
+        // white-space: pre-wrap;
+        // margin-top: 6px;
     }
+    
 }
 
 #scollDiv {
     max-height: 500px;
     overflow-y: scroll;
+}
+
+#messageContainer{
+    overflow-y: auto;
+    overflow-x: auto;
+    word-break: break-word;
 }
 
 .container {
@@ -133,4 +143,16 @@ a.show_user {
 a.admin_control {
     color: blue !important;
     font-weight: 700;
+}
+
+.main-section{
+    margin:0 auto;
+    padding: 20px;
+    margin-top: 100px;
+    background-color: #fff;
+    box-shadow: 0px 0px 20px #c1c1c1;
+}
+.fileinput-remove,
+.fileinput-upload{
+    display: none;
 }

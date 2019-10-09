@@ -83,8 +83,7 @@ class SettingController extends Controller
         //     'email' => 'required|unique:users,email',
         //     'password' => 'same:confirm-password'.($input['password'] !== null ? '|min:8' : '' )
         // ]);
-        dd($this);
-
+        
         if(isset($input['password'])){
             $input['password'] = Hash::make($input['password']);
         }else{

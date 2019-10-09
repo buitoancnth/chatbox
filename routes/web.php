@@ -33,6 +33,7 @@ Route::group(['middleware' => ['auth']], function () {
 // user setting
 Route::group(['middleware' => 'auth', 'prefix' => 'setting'], function () {
     Route::get('/', 'SettingController@index')->name('setting.index'); 
+    Route::get('/images', 'PhotoController@index')->name('setting.photos'); 
     // Route::patch('update', 'SettingController@update')->name('setting.update'); 
 });
 // Route::resource('users', 'UserController');

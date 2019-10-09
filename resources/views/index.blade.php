@@ -5,28 +5,6 @@
         <!-- Scripts -->
         <script type="text/javascript">
             $(document).ready(function () {
-                // function UrlExists(urlToFile) {
-                //     var xhr = new XMLHttpRequest();
-                //     xhr.open('HEAD', urlToFile, false);
-                //     xhr.send();
-
-                //     if (xhr.status == "404") {
-                //         return false;
-                //     } else {
-                //         return true;
-                //     }
-                // }
-                // function UrlExists(url) {
-                //     // filename = this.trim();
-                    
-                //     var response = jQuery.ajax({
-                //         url: url,
-                //         type: 'HEAD',
-                //         async: false
-                //     }).status;	
-                    
-                //     return (response != "200") ? false : true;
-                // }
                 function convert(text)
                 {
                     var exp = /(\b(https?|ftp|file):\/\/[-A-Z0-9+&@#\/%?=~_|!:,.;]*[-A-Z0-9+&@#\/%=~_|])/ig;
@@ -35,7 +13,9 @@
                     var result =text1.replace(exp2, '$1<a target="_blank" href="http://$2">$2</a>');
                     return result;
                 }
-                var myFirebase = new Firebase('https://fir-253807.firebaseio.com/');
+                // https://fir-253807.firebaseio.com/
+                // https://fireb-b8686.firebaseio.com/
+                var myFirebase = new Firebase('https://fireb-b8686.firebaseio.com/');
                 var ids_admin_group = [1,2];
                 var name = $('#name_user').val();
                 var role_id = $('#role_id').val();
@@ -62,7 +42,7 @@
                     // console.log(message);
                     if(ids_admin_group.includes(role_id)){
                         // $('a.show_user').addClass('admin_control');
-                        style = 'style="color: blue !important"';
+                        style = 'style="color: blue !important; font-weight: 900;"';
                     }
 
                     var url = "uploads/avatars/user.jpg";
@@ -80,9 +60,7 @@
 
                     var html = 
                         '<tr class="list-inline chat">' + 
-                            '<td class="list-inline-item name_chat">' + avatar + name_user + ': </td>' + 
-                            '<td class="list-inline-item content_chat">' + convert(message.text) + '</td>' + 
-                            '<td class="list-inline-item more_option"></td>' +
+                            '<td class="list-inline-item content_chat">'+ avatar + name_user + ' <span id="content-chat">'+ convert(message.text) +'</span></td>' + 
                         '</tr>';
                     $('#messageContainer tr:last').after(html);
                     
@@ -112,7 +90,7 @@
                                         {{ Auth::user()->name }}
                                     @endguest
                                 </span>
-                                <input id="name_user" type="hidden" value="{{ Auth::user()->name ?? 'Guest' }}">
+                                <input id="name_user" type="hidden" value="{{ Auth::user()->name ?? 'Guest_'.time() }}">
                                 <input id="role_id" type="hidden" value="{{ (Auth::user() != null) ? Auth::user()->roles()->pluck('id')->first() : 'null' }}">
                                 <input id="user_id" type="hidden" value="{{ (Auth::user() != null) ? Auth::user()->id : 'null' }}">
                                 <input id="user_avatar" type="hidden" value="{{ (Auth::user() != null) ? Auth::user()->avatar : 'null' }}">
@@ -167,7 +145,7 @@
                 Your browser does not support the audio element.
             </audio>
             <br/><br/><h2>Tình Anh Em</h2>
-            <iframe width="100%" height="400px" src="https://www.youtube.com/embed/ACXuP5zn_eI" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            <iframe width="100%" height="400px" src="https://www.youtube.com/embed/cBClD7jylos" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
             {{-- <br/><br/><h2>Lão Hạc(part 2)</h2> --}}
             {{-- <iframe width="600" height="400" src="https://www.youtube.com/embed/5V39cdKw9fc" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe> --}}
             {{-- <iframe width="600" height="400" src="https://www.youtube.com/embed/1wm0vfPoO1Q" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe> --}}
@@ -212,7 +190,10 @@
     <div class="col-md-4 col-md-offset-3">
         <center><img src="{{ url('/') }}/2.jpg" alt="Italian Trulli"></center>
     </div> --}}
-    {{-- <div class="col-md-4 col-md-offset-3">
-        <center><img src="{{ url('/') }}/photo_2019-09-24_16-26-18.jpg" alt="Italian Trulli"></center>
-    </div> --}}
+    {{-- @for ($i = 1; $i < 10; $i++)
+        <div class="col-md-4 col-md-offset-3">
+            <center><img src="{{ url('/') }}/1082019/{{ $i }}.jpg" alt="Italian Trulli"></center>
+        </div>
+    @endfor --}}
+    
 @endsection
