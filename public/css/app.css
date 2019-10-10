@@ -16526,6 +16526,10 @@ readers do not read off random characters that represent icons */
   height: 200px;
 }
 
+.setting .main-section {
+  margin-top: 0px;
+}
+
 tr.chat td {
   padding: 0.25rem !important;
   vertical-align: top;

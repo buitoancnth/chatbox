@@ -1,6 +1,6 @@
 $(document).ready(function () {
-    $("#file-1").fileinput({
-        theme: 'fa',
+    $("#upload_image").fileinput({
+        theme: 'fas',
         uploadUrl: "/image-view",
         uploadExtraData: function() {
             return {
@@ -13,6 +13,11 @@ $(document).ready(function () {
         maxFilesNum: 10,
         slugCallback: function (filename) {
             return filename.replace('(', '_').replace(']', '_');
-        }
+        },
+        overwriteInitial: false,
+        showCancel: true,
+        initialPreviewConfig: [
+            {width: '50px',}
+        ],
     });
 });

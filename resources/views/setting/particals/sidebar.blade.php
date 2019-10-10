@@ -3,8 +3,8 @@
         Managment Profile
     </div>
     <div class="list-group list-group-flush">
-        <a href="{{ route('setting.index') }}" class="list-group-item"><i class="fas fa-user-edit"></i>Profile</a>
-        <a href="{{ route('setting.photos') }}" class="list-group-item"><i class="fas fa-bell"></i>Management Images</a>
+        <a href="{{ route('setting.index') }}" class="list-group-item"><i class="fa fa-user"></i>Profile</a>
+        <a href="{{ route('setting.photos') }}" class="list-group-item"><i class="fa fa-file-image-o"></i></i>Management Images</a>
         <a href="" class="list-group-item"><i class="fas fa-tools"></i>Account ties</a>
     </div>
 </div>

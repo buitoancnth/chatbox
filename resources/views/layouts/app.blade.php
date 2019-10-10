@@ -10,14 +10,16 @@
     <title>{{ config('app.name', 'Chat Box') }}</title>
 
     <!-- Scripts -->
-    <script src="{{ asset('js/app.js') }}" defer></script>
-
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js' ></script>
+    <script src="{{ asset('js/app.js') }} " async></script>
+    {{-- <link href="{{ asset('assets/fonts/font-awesome.min.css') }}" media="all" rel="stylesheet" type="text/css" /> --}}
     <!-- Fonts -->
-    <link rel="dns-prefetch" href="//fonts.gstatic.com">
-    <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
-    <script src='https://cdn.firebase.com/js/client/2.2.1/firebase.js'></script>  
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/croppie/2.6.3/croppie.min.js"></script>
+    {{-- <link rel="dns-prefetch" href="//fonts.gstatic.com"> --}}
+    {{-- <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet"> --}}
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" media="all" rel="stylesheet" type="text/css" />
+    {{-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script> --}}
+    {{-- <script src='https://cdn.firebase.com/js/client/2.2.1/firebase.js'></script>   --}}
+    {{-- <script src="https://cdnjs.cloudflare.com/ajax/libs/croppie/2.6.3/croppie.min.js"></script> --}}
     {{-- <script src="{{ asset('assets/js/upload-avatar.js') }}"></script> --}}
     <link href="{{ asset('css/welcome.css') }}" rel="stylesheet">
 

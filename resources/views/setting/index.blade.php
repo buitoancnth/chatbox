@@ -4,11 +4,11 @@
 @include('shared.errors-form')
 @include('shared.success-form')
 <div class="row setting">
-    <div class="col-md-4">
+    <div class="col-md-3">
         @include('setting.particals.sidebar')
     </div>
 
-    <div class="col-md-8">
+    <div class="col-md-9">
         <div class="card">
             <div class="card-header bg-primary">Information</div>
             <div class="card-body">

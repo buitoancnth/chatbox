@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-    @push('head')
+    @push('footer')
         <!-- Scripts -->
         <script type="text/javascript">
             $(document).ready(function () {
