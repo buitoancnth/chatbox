@@ -16629,11 +16629,6 @@ a.admin_control {
   box-shadow: 0px 0px 20px #c1c1c1;
 }
 
-.fileinput-remove,
-.fileinput-upload {
-  display: none;
-}
-
 body {
   background-color: #d5e1e8;
   opacity: 0.9;

@@ -10,8 +10,7 @@
     <title>{{ config('app.name', 'Chat Box') }}</title>
 
     <!-- Scripts -->
-    <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js' ></script>
-    <script src="{{ asset('js/app.js') }} " async></script>
+    
     {{-- <link href="{{ asset('assets/fonts/font-awesome.min.css') }}" media="all" rel="stylesheet" type="text/css" /> --}}
     <!-- Fonts -->
     {{-- <link rel="dns-prefetch" href="//fonts.gstatic.com"> --}}
@@ -21,7 +20,9 @@
     {{-- <script src='https://cdn.firebase.com/js/client/2.2.1/firebase.js'></script>   --}}
     {{-- <script src="https://cdnjs.cloudflare.com/ajax/libs/croppie/2.6.3/croppie.min.js"></script> --}}
     {{-- <script src="{{ asset('assets/js/upload-avatar.js') }}"></script> --}}
-    <link href="{{ asset('css/welcome.css') }}" rel="stylesheet">
+    {{-- <link href="{{ asset('css/welcome.css') }}" rel="stylesheet"> --}}
+    <link href="{{ asset('assets/css/fileinput.min.css') }}" media="all" rel="stylesheet" type="text/css" />
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" crossorigin="anonymous">
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">

@@ -1,0 +1,7 @@
+.file-drop-zone { 
+    overflow: hidden;
+}
+
+.krajee-default.file-preview-frame {
+    margin: 12px !important;
+}

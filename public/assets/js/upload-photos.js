@@ -15,9 +15,8 @@ $(document).ready(function () {
             return filename.replace('(', '_').replace(']', '_');
         },
         overwriteInitial: false,
-        showCancel: true,
-        initialPreviewConfig: [
-            {width: '50px',}
-        ],
+        showCancel: false,
+        // initialPreviewAsData: true,
+        // showUpload: true,
     });
 });

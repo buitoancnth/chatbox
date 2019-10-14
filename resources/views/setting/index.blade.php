@@ -17,11 +17,12 @@
                     <div class="mx-auto col-lg-4 col-sm-12">
                         <label class="cabinet avatar">
                             <figure>
-                                <img src="{{ asset('uploads/avatars').'/'.$current_user->avatar }}" class="gambar img-responsive img-thumbnail" id="item-img-output" />
+                                <img src="{{ asset('uploads/avatars').'/'.$current_user->avatar }}"
+                                    class="gambar img-responsive img-thumbnail" id="item-img-output" />
                                 <figcaption><i class="fas fa-camera"></i></figcaption>
                             </figure>
                             <input type="file" class="item-img file d-none" name="file_avatar" />
-                            <input type="hidden" class="item-img file d-none" name="avatar_name" id="avatar_name"/>
+                            <input type="hidden" class="item-img file d-none" name="avatar_name" id="avatar_name" />
                         </label>
                     </div>
                 </div>
@@ -57,10 +58,10 @@
         <div class="modal-content">
             <div class="modal-header">
                 <h4 class="modal-title" id="myModalLabel">
-                        Edit Photo</h4>
+                    Edit Photo</h4>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
                         aria-hidden="true">&times;</span></button>
-                
+
             </div>
             <div class="modal-body">
                 <div class="row">
