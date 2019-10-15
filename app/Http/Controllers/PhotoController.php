@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Photo;
 use Illuminate\Http\Request;
+use Carbon\Carbon;
 
 class PhotoController extends Controller
 {
@@ -14,7 +15,8 @@ class PhotoController extends Controller
      */
     public function index()
     {
-        $photos = Photo::orderBy('id', 'DESC');
+        $photos = Photo::where('user_id', auth()->user()->id)->orderBy('id', 'DESC')->get();
+        
         return view('setting.photos',compact('photos'));
     }
 
@@ -36,7 +38,16 @@ class PhotoController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $current_user = auth()->user();
+        $id = $current_user->id;
+        // $image_name = $request->file('file')->getClientOriginalName();
+        $fileExtension = $request->file('file')->getClientOriginalExtension();
+        
+        $image_name = time()."_".rand(0,999999999)."_".md5(rand(0,9999999999999)).".".$fileExtension;
+        $request->file->move(public_path('uploads/photos/'.$id), $image_name);
+        $photo = Photo::firstOrCreate(['user_id'=>$id, 'image'=>$image_name, 'published_at'=>now()]);
+
+        return response()->json(['uploaded' => '/uploads/photos/'.$id.'/'.$image_name]);
     }
 
     /**

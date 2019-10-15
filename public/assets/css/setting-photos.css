@@ -5,3 +5,7 @@
 .krajee-default.file-preview-frame {
     margin: 12px !important;
 }
+
+.file-error-message {
+    clear: left;
+}

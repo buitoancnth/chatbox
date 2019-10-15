@@ -27,13 +27,16 @@
         {!! csrf_field() !!}
         <div class="form-group">
             <div class="file-loading">
-                <input id="upload_image" name="input-fas[]" type="file" name="file" multiple>
+                <input id="upload_image" name="file" type="file" multiple>
             </div>
         </div>
         <div class="row">
             @foreach ($photos as $photo)
-                <div class="col-md-6">
-                    <img src="..." class="rounded float-left" alt="">
+            @php
+                // dd($photo)
+            @endphp
+                <div class="col-md-6 mb-5">
+                    <img class="img-thumbnail" src="{{ asset('uploads/photos').'/'.$photo->user_id.'/'.$photo->image }}" class="rounded float-left" alt="">
                 </div>
             @endforeach
         </div>

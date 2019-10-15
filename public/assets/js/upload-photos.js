@@ -1,7 +1,7 @@
 $(document).ready(function () {
     $("#upload_image").fileinput({
         theme: 'fas',
-        uploadUrl: "/image-view",
+        uploadUrl: "/setting/images",
         uploadExtraData: function() {
             return {
                 _token: $("input[name='_token']").val(),
