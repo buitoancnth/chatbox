@@ -3,9 +3,58 @@
 }
 
 .krajee-default.file-preview-frame {
-    margin: 12px !important;
+    margin: 7px !important;
 }
 
 .file-error-message {
     clear: left;
+}
+
+.album-photos{
+    padding: 20px;
+}
+
+.setting-img{
+    height: 300px;
+    width: 100%;
+    position: relative;
+}
+
+#setting-action {
+    position: absolute;
+    bottom: 10px;
+    right: 22px;
+    color: black;
+}
+
+#setting-action i{
+    font-size: 15px;
+    margin: 2px;
+    border-radius: 50%;
+    background: white;
+    padding: 7px;
+}
+
+/* .modal-content {
+    max-width: 800px;
+    max-height: 500px;
+} */
+
+.modal .single-image{
+    width: auto;
+    height: auto;
+    max-width: 100%;
+    max-height: 100%;
+}
+
+#edit-photo{
+    width: 100%;
+}
+
+.delete-image {
+    text-align: center;
+}
+
+.image img {
+    object-fit: cover;
 }

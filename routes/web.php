@@ -15,6 +15,7 @@ Route::get('/', function () {
     return view('index');
 });
 
+
 Route::get('/index' ,'FirebaseController@index', function () {
     // return view('welcome');
 });
@@ -22,21 +23,24 @@ Route::get('/index' ,'FirebaseController@index', function () {
 Auth::routes();
 
 // Route::get('/home', 'HomeController@index')->name('home');
-Route::patch('/edit-profile', 'UserController@editProfile')->name('edit-profile');
 
 Route::group(['middleware' => ['auth']], function () {
+    Route::patch('/edit-profile', 'UserController@editProfile')->name('edit-profile');
+
     Route::resource('users', 'UserController');
     Route::resource('roles', 'RoleController');
+    Route::resource('permissions', 'PermissionController');
     Route::resource('products', 'ProductController');
+    Route::resource('photos', 'PhotoController');
+    Route::get('new-feed', 'RelaxController@index')->name('new-feed');
+    
 });
 
-// user setting
-Route::group(['middleware' => 'auth', 'prefix' => 'setting'], function () {
-    Route::get('/', 'SettingController@index')->name('setting.index'); 
-    Route::get('/images', 'PhotoController@index')->name('setting.photos'); 
-    Route::post('/images', 'PhotoController@store'); 
-    // Route::patch('update', 'SettingController@update')->name('setting.update'); 
+// user profile
+Route::group(['middleware' => 'auth', 'prefix' => 'profile'], function () {
+    Route::get('/', 'ProfileController@index')->name('profile.index');
+    Route::get('/photos', 'ProfileController@getPhotos')->name('profile.photos'); 
+    Route::post('/photos', 'ProfileController@store')->name('photo.store'); 
+    Route::patch('/photos/{id}', 'ProfileController@update')->name('photo.update'); 
+    Route::delete('/photos/{id}', 'ProfileController@destroy')->name('photo.destroy'); 
 });
-// Route::resource('users', 'UserController');
-// Route::resource('roles', 'RoleController');
-// Route::resource('products', 'ProductController');

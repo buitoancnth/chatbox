@@ -7,22 +7,24 @@ use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\File;
 
-class PhotoController extends Controller
+class ProfileController extends Controller
 {
-    function __contruct(){
-        $this->middleware('permission:management-photos');
-    }
-
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+
+    public function index(){
+        $current_user = auth()->user();
+        return view('profile.index', compact('current_user'));
+    }
+
+    public function getPhotos()
     {
-        $photos = Photo::orderBy('id', 'DESC')->get();
+        $photos = Photo::where('user_id', auth()->user()->id)->orderBy('id', 'DESC')->get();
         
-        return view('photos.index',compact('photos'));
+        return view('profile.photos',compact('photos'));
     }
 
     /**
@@ -61,7 +63,7 @@ class PhotoController extends Controller
      * @param  \App\Photo  $photo
      * @return \Illuminate\Http\Response
      */
-    public function show(Photo $photo)
+public function show(Photo $photo)
     {
         //
     }
@@ -89,7 +91,7 @@ class PhotoController extends Controller
         $photo = Photo::find($id);
         $photo->update($request->all());
 
-        return redirect()->route("setting.show")
+        return redirect()->route("profile.photos")
                         ->with('success', 'Photo Updated suceesfully');
     }
 
@@ -111,6 +113,6 @@ class PhotoController extends Controller
             unlink($image_path);
         }
 
-        return redirect()->route("setting.show")->with('success', 'Photo deleteded suceesfully');
+        return redirect()->route("profile.photos")->with('success', 'Photo deleteded suceesfully');
     }
 }

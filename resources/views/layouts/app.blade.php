@@ -26,6 +26,7 @@
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    <link href="{{ asset('assets/css/common.css') }}" rel="stylesheet">
     <link href="{{ asset('assets/css/croppie.css') }}" rel="stylesheet">
     <!-- bootstrap 4.x is supported. You can also use the bootstrap css 3.3.x versions -->
     @stack('head')
@@ -61,17 +62,27 @@
                                 </li>
                             @endif
                         @else
+                            <li><a class="nav-link" href="/new-feed">News Feed</a></li>                                
+
                             @can('management-users')
                                 <li><a class="nav-link" href="{{ route('users.index') }}">Manage Users</a></li>
                             @endcan
                             @can('management-roles')
                                 <li><a class="nav-link" href="{{ route('roles.index') }}">Manage Role</a></li>
                             @endcan
+
+                            @can('management-permission')
+                                <li><a class="nav-link" href="{{ route('permissions.index') }}">Manage Permission</a></li>
+                            @endcan
+
+                            @can('management-photos')
+                                <li><a class="nav-link" href="{{ route('photos.index') }}">Manage Photo</a></li>
+                            @endcan
+                            
                             {{-- @can('management-images') --}}
-                                <li><a class="nav-link" href="">Manage Images</a></li>                                
                             {{-- @endcan --}}
                             {{-- @can('management-videos') --}}
-                                <li><a class="nav-link" href="">Manage Images</a></li>                                
+                                {{-- <li><a class="nav-link" href="">Videos</a></li>                                 --}}
                             {{-- @endcan --}}
                             <li class="nav-item dropdown">
                                 <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
@@ -79,7 +90,7 @@
                                 </a>
 
                                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                                    <a href="{{ route('setting.index') }}" class="dropdown-item"> Settings</a>
+                                    <a href="{{ route('profile.index') }}" class="dropdown-item"> Profile</a>
                                     <a class="dropdown-item" href="{{ route('logout') }}"
                                         onclick="event.preventDefault();
                                                     document.getElementById('logout-form').submit();">
@@ -101,6 +112,7 @@
             <div class="container">
                 @yield('content')
             </div>
+            @yield('content-relax')
         </main>
     </div>
     @include('include.footer')

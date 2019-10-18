@@ -25,7 +25,7 @@ class UserController extends Controller
      */
     public function index(Request $request)
     {
-        // dd(auth()->user()->roles->pluck('name'));
+        // dd(auth()->user()->permissions);
         $data = User::orderBy('id', 'DESC')->paginate(5);
         return view('users.index', compact('data'))->with('i', ($request->input('page', 1) - 1) * 5);
     }
@@ -58,7 +58,6 @@ class UserController extends Controller
 
         $input = $request->all();
         $input['password'] = Hash::make($input['password']);
-        dd($input);
         $user = User::create($input);
 
         $user->assignRole($request->input('roles'));
@@ -134,7 +133,7 @@ class UserController extends Controller
     {
         $user = User::find($id);
         $user->delete();
-        $image_path_old = public_path() . "/uploads/avatars/" . $user->avatar;
+        $image_path_old = public_path() . "uploads/avatars/" . $user->avatar;
         if (File::exists($image_path)) {
             unlink($image_path_old);
         }
@@ -150,15 +149,16 @@ class UserController extends Controller
         $this->validate($request, [
             'name' => 'required',
             'email' => 'required|unique:users,email,'.$id,
-            'password' => 'same:confirm-password'.($input['password'] !== null ? '|min:8' : '' )
+            'password' => 'same:confirm-password'.($input['password'] !== null ? '|min:8' : '' ),
+            'birth_day' => 'date',
         ]);
 
-        $image_path_old = public_path() . "/uploads/avatars/" . $user->avatar;
-        if (File::exists($image_path_old)) {
-            unlink($image_path_old);
-        }
-
         if(isset($input['file_avatar'])){
+            $image_path_old = public_path() . "/uploads/avatars/" . $user->avatar;
+            if (File::exists($image_path_old)) {
+                unlink($image_path_old);
+            }
+
             $data = $input['avatar_name'];            
             list($type, $data) = explode(';', $data);
             list(, $data)      = explode(',', $data);
@@ -174,9 +174,11 @@ class UserController extends Controller
         }else{
             $input = Arr::except($input, ['password']);
         }
+
+        // dd($input);
         $user->update($input);
 
-        return redirect()->route('setting.index')
+        return redirect()->route('profile.index')
                         ->with('success', 'Updated profile sucessfuly !');
     }
 }

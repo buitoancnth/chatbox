@@ -5,7 +5,7 @@
 @include('shared.success-form')
 <div class="row setting">
     <div class="col-md-3">
-        @include('setting.particals.sidebar')
+        @include('profile.particals.sidebar')
     </div>
 
     <div class="col-md-9">
@@ -28,6 +28,10 @@
                 </div>
 
                 <div class="form-group">
+                    {!! Form::text('head_line', null, ['class' => 'form-control', 'placeholder'=>"What's on your mind?"]) !!}
+                </div>
+
+                <div class="form-group">
                     <strong>Name:</strong>
                     {!! Form::text('name', null, ['class' => 'form-control', 'placeholder'=>'Name']) !!}
                 </div>
@@ -35,6 +39,21 @@
                 <div class="form-group">
                     <strong>Email:</strong>
                     {!! Form::text('email', null, ['class' => 'form-control', 'placeholder'=>'Name']) !!}
+                </div>
+
+                <div class="form-group">
+                    <strong>Birth Day:</strong>
+                    {!! Form::date('birth_day', null, ['class' => 'form-control', 'placeholder'=>'Birth Day']) !!}
+                </div>
+
+                <div class="form-group">
+                    <strong>Address:</strong>
+                    {!! Form::text('address', null, ['class' => 'form-control', 'placeholder'=>'Address']) !!}
+                </div>
+
+                <div class="form-group">
+                    <strong>Job:</strong>
+                    {!! Form::text('job', null, ['class' => 'form-control', 'placeholder'=>'Job']) !!}
                 </div>
 
                 <div class="form-group">

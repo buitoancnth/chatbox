@@ -40,7 +40,7 @@
                         </div>
 
                         <div class="form-group row">
-                            <label for="gender" class="col-md-4 col-form-label text-md-right">Gender</label>
+                            <label for="inputGroupSelect01" class="col-md-4 col-form-label text-md-right">Gender</label>
 
                             <div class="col-md-6">
                                 <select class="custom-select" id="inputGroupSelect01" name="gender">
@@ -49,6 +49,20 @@
                                 </select>
 
                                 @error('gender')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <label for="birth_day" class="col-md-4 col-form-label text-md-right">Birth Day</label>
+
+                            <div class="col-md-6">
+                                <input id="birth_day" type="date" class="form-control @error('birth_day') is-invalid @enderror" name="birth_day" value="{{ old('birth_day') }}" required autocomplete="birth_day" autofocus>
+
+                                @error('birth_day')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
                                     </span>

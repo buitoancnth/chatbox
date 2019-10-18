@@ -12,6 +12,7 @@
 
 <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js' ></script>
 <script src="{{ asset('js/app.js') }}"></script>
+<script src="{{ asset('assets/js/common.js') }}"></script>
 <script src='https://cdn.firebase.com/js/client/2.2.1/firebase.js'></script>  
 <script src="https://cdnjs.cloudflare.com/ajax/libs/croppie/2.6.3/croppie.min.js"></script>
 <script src="{{ asset('assets/js/croppie.js') }}"></script>
