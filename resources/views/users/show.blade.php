@@ -31,12 +31,37 @@
         <div class="form-group">
             <strong>Roles:</strong>
             @if(0 !== count($user->getRoleNames()))
-                @foreach($user->getRoleNames() as $v)
-                    <label class="badge badge-success">{{ $v }}</label>
-                @endforeach
+            @foreach($user->getRoleNames() as $v)
+            <label class="badge badge-success">{{ $v }}</label>
+            @endforeach
             @else
-            	<p>dont have role</p>
+            <p>dont have role</p>
             @endif
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    <button class="btn btn-primary" data-toggle="modal" data-target="#send_message">Send message</button>
+</div>
+
+<div class="modal fade" id="send_message" tabindex="-1" role="dialog" aria-labelledby="send_message" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">New Message</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <h5>Tới: {{ $user->name }}</h5>
+                <textarea title="Soạn một tin nhắn..." name="massage_body" id="massage_body" cols="63" rows="4" placeholder="Soạn một tin nhắn..."></textarea>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary">Send</button>
+            </div>
         </div>
     </div>
 </div>

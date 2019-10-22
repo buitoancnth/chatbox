@@ -40,7 +40,7 @@
             <div class="row album-photos">
                 @foreach ($photos as $photo)
                 <form id="delete_image_in_setting" class="d-none" method="POST"
-                    action="{{ route('photo.destroy',['id'=>$photo->id]) }}">
+                    action="{{ route('profile.photo.destroy',['id'=>$photo->id]) }}">
                     @csrf
                     <input type="submit"></input>
                     @method('DELETE')
@@ -78,7 +78,7 @@
                             <!--Footer-->
                             <div class="modal-footer">
                                 {!! Form::model($photo, ['id'=>'edit-photo', 'method'=>'PATCH',
-                                'route'=>['photo.update', $photo->id]]) !!}
+                                'route'=>['profile.photo.update', $photo->id]]) !!}
                                 <div class="form-group row">
                                     <label for="description" class="col-sm-2 col-form-label">Description</label>
                                     <div class="col-sm-10">
@@ -135,7 +135,7 @@
 
                             <!--Footer-->
                             <div class="modal-footer flex-center mx-auto">
-                                <a href="javascript:void(0)" onclick="deleteCallAjax({{ $photo->id }}, '{{ route('photo.destroy',['id'=>$photo->id]) }}')" class="btn btn-outline-danger">Yes</a>
+                                <a href="javascript:void(0)" onclick="deleteCallAjax({{ $photo->id }}, '{{ route('profile.photo.destroy',['id'=>$photo->id]) }}')" class="btn btn-outline-danger">Yes</a>
                                 <a type="button" class="btn  btn-danger waves-effect" data-dismiss="modal">No</a>
                             </div>
                         </div>

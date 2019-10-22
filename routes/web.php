@@ -40,7 +40,7 @@ Route::group(['middleware' => ['auth']], function () {
 Route::group(['middleware' => 'auth', 'prefix' => 'profile'], function () {
     Route::get('/', 'ProfileController@index')->name('profile.index');
     Route::get('/photos', 'ProfileController@getPhotos')->name('profile.photos'); 
-    Route::post('/photos', 'ProfileController@store')->name('photo.store'); 
-    Route::patch('/photos/{id}', 'ProfileController@update')->name('photo.update'); 
-    Route::delete('/photos/{id}', 'ProfileController@destroy')->name('photo.destroy'); 
+    Route::post('/photos', 'ProfileController@store')->name('profile.photo.store'); 
+    Route::patch('/photos/{id}', 'ProfileController@update')->name('profile.photo.update'); 
+    Route::delete('/photos/{id}', 'ProfileController@destroy')->name('profile.photo.destroy'); 
 });
