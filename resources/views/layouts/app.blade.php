@@ -23,7 +23,7 @@
     {{-- <link href="{{ asset('css/welcome.css') }}" rel="stylesheet"> --}}
     <link href="{{ asset('assets/css/fileinput.min.css') }}" media="all" rel="stylesheet" type="text/css" />
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" crossorigin="anonymous">
-
+    <link href="https://fonts.googleapis.com/css?family=Roboto:100,300,400,500,700,900" rel="stylesheet">
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     <link href="{{ asset('assets/css/common.css') }}" rel="stylesheet">
@@ -62,7 +62,8 @@
                                 </li>
                             @endif
                         @else
-                            <li><a class="nav-link" href="/new-feed">News Feed</a></li>                                
+                            <li><a class="nav-link" href="/new-feed">News Feed</a></li>
+                            <li><a class="nav-link" href="/chats">Chats</a></li>                                
 
                             @can('management-users')
                                 <li><a class="nav-link" href="{{ route('users.index') }}">Manage Users</a></li>

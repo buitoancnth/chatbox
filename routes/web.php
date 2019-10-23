@@ -33,7 +33,13 @@ Route::group(['middleware' => ['auth']], function () {
     Route::resource('products', 'ProductController');
     Route::resource('photos', 'PhotoController');
     Route::get('new-feed', 'RelaxController@index')->name('new-feed');
-    
+    Route::get('chats', function ()
+    {
+        return view('messages.private-chat');
+    });
+
+    Route::get('messages', 'MessageController@fetchMessages');
+    Route::post('messages', 'MessageController@sendMessages');
 });
 
 // user profile
