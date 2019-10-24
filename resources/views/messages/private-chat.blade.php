@@ -1,5 +1,5 @@
 @extends('layouts/app')
 
 @section('content')
-    <private-chat></private-chat>
+    <private-chat :user="{{ auth()->user() }}"></private-chat>
 @endsection

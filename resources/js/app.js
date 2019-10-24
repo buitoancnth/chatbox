@@ -8,7 +8,8 @@ require('./bootstrap');
 
 window.Vue = require('vue');
 
-import Vuetify from 'vuetify/lib'
+// import Vuetify from 'vuetify/lib'
+window.Vuetify = require('vuetify');
 import 'vuetify/dist/vuetify.min.css'
 
 Vue.use(Vuetify)

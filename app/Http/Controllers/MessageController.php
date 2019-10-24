@@ -3,19 +3,20 @@
 namespace App\Http\Controllers;
 
 use App\Message;
+use App\Events\MessageSent;
 use Illuminate\Http\Request;
 
 class MessageController extends Controller
 {
     public function fetchMessages(){
-        return Message::with('user')->all();
+        return Message::get()->load('user');
     }
 
     public function sendMessages(Request $request){
-        $message = auth()->user->messages()->create(['message' => $request]);
-        broadcast(new MessageSent(auth()->user, $message->load('user')))->toOthers();
+        $message = auth()->user()->messages()->create(['message' => $request->message]);
+        broadcast(new MessageSent(auth()->user(), $message->load('user')))->toOthers();
 
-        return response(['status'=>'Message Sent Successfully']);
+        return response(['status'=>'Message Sent Successfully', 'message' => $message]);
     }
 
     /**

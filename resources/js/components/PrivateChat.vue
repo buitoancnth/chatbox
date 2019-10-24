@@ -15,25 +15,25 @@
 
     </v-flex>
 
-    <div class="floating-div">
+    <!-- <div class="floating-div">
         <picker v-if="emoStatus" set="emojione" @select="onInput" title="Pick your emoji…" />
 
-    </div>
+    </div> -->
 
     <v-footer height="auto" fixed color="grey">
         <v-layout row>
-            <v-flex class="ml-2 text-right" xs1>
+            <!-- <v-flex class="ml-2 text-right" xs1>
                 <v-btn @click="toggleEmo" fab dark small color="pink">
                     <v-icon>insert_emoticon </v-icon>
                 </v-btn>
-            </v-flex>
+            </v-flex> -->
 
-            <v-flex xs1 class="text-center">
+            <!-- <v-flex xs1 class="text-center">
                 <file-upload post-action="/messages" ref='upload' @input-file="$refs.upload.active = true" :headers="{'X-CSRF-TOKEN': token}">
                     <v-icon class="mt-3">attach_file</v-icon>
                 </file-upload>
 
-            </v-flex>
+            </v-flex> -->
             <v-flex xs6>
                 <v-text-field rows=2 v-model="message" label="Enter Message" single-line @keyup.enter="sendMessage"></v-text-field>
             </v-flex>
@@ -50,7 +50,12 @@
 </template>
 
 <script>
+import MessageList from './_message-list';
 export default {
+    props: ['user'],
+    components: {
+        MessageList,
+    },
     data() {
         return {
             message: null,
@@ -64,18 +69,33 @@ export default {
                 return alert('please enter');
             }
 
-            this.allMessages.push(this.message);
+            // this.allMessages.push(this.message);
 
-            axios.post('/messages', this.message).then(response => {
-                console.log(response.data);
+            axios.post('/messages', {message: this.message}).then(response => {
+                this.message = null;
+                this.allMessages.push(response.data.message);
+                setTimeout(this.scrollToEnd,10);
             });
         },
-        fetchMessage() {
-            axios.post('/messages', this.message).then(response => {
+        fetchMessages() {
+            axios.get('/messages').then(response => {
                 this.allMessages = response.data;
             });
         }
 
+    },
+
+    mounted(){
+        // console.dir(this.user);
+    },
+
+    created(){
+        this.fetchMessages();
+        Echo.private('datingFFun')
+        .listen('MessageSent',(e)=>{
+            this.allMessages.push(e.message)
+            setTimeout(this.scrollToEnd,100);
+        });
     }
 
 }
