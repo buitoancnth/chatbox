@@ -9,12 +9,15 @@
     "license": "MIT",
     "require": {
         "php": "^7.2",
+        "aws/aws-sdk-php": "^3.112",
         "fideloper/proxy": "^4.0",
         "kreait/firebase-php": "4.0",
         "laravel/framework": "^6.0",
         "laravel/tinker": "^1.0",
         "laravel/ui": "^1.0",
         "laravelcollective/html": "^6.0",
+        "pda/pheanstalk": "^4.0",
+        "predis/predis": "^1.1",
         "pusher/pusher-php-server": "~4.0",
         "qcod/laravel-imageup": "^1.0",
         "spatie/laravel-permission": "^3.0"

@@ -12,7 +12,11 @@
   "dependencies": {
     "@fortawesome/fontawesome-free": "^5.11.2",
     "laravel-echo": "^1.6.1",
+    "laravel-echo-server": "^1.5.9",
     "pusher-js": "^5.0.2",
+    "socket.io": "^2.3.0",
+    "socket.io-client": "^2.3.0",
+    "vue-socket.io": "^3.0.7",
     "vuetify": "^2.1.6"
   },
   "devDependencies": {

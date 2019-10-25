@@ -33,9 +33,6 @@
 <script>
 export default {
     props: ['user', 'allMessages'],
-    mounted() {
-        console.dir(this.user)
-    }
 }
 </script>
 

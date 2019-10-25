@@ -9,7 +9,13 @@ use Illuminate\Http\Request;
 class MessageController extends Controller
 {
     public function fetchMessages(){
+        // if ($messages = Redis::get('messages.all')) {
+        //     return json_decode($messages);
+        // }
         return Message::get()->load('user');
+        // Redis::set('messages.all', $messages);
+
+        // return $message;
     }
 
     public function sendMessages(Request $request){

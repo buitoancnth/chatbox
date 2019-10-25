@@ -5,17 +5,13 @@
  */
 
 require('./bootstrap');
-
-window.Vue = require('vue');
-
+window.Vue = require('vue')
 // import Vuetify from 'vuetify/lib'
-window.Vuetify = require('vuetify');
+window.Vuetify = require('vuetify')
 import 'vuetify/dist/vuetify.min.css'
+Vue.use(Vuetify);
 
-Vue.use(Vuetify)
-
-/**
- * The following block of code may be used to automatically register your
+ /* The following block of code may be used to automatically register your
  * Vue components. It will recursively scan this directory for the Vue
  * components and automatically register them with their "basename".
  *
@@ -37,4 +33,3 @@ Vue.component('private-chat', require('./components/PrivateChat.vue').default);
 const app = new Vue({
     el: '#app',
 });
-

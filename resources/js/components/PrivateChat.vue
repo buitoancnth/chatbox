@@ -50,6 +50,10 @@
 </template>
 
 <script>
+window.Echo.channel('chatbox_database_chatroom')
+    .listen('MessageSent', (e) => {
+        console.log(e);
+    });
 import MessageList from './_message-list';
 export default {
     props: ['user'],
@@ -74,7 +78,7 @@ export default {
             axios.post('/messages', {message: this.message}).then(response => {
                 this.message = null;
                 this.allMessages.push(response.data.message);
-                setTimeout(this.scrollToEnd,10);
+                setTimeout(this.scrollToEnd,100);
             });
         },
         fetchMessages() {
@@ -91,8 +95,9 @@ export default {
 
     created(){
         this.fetchMessages();
-        Echo.private('datingFFun')
+        Echo.channel('chatbox_database_chatroom')
         .listen('MessageSent',(e)=>{
+            console.log(e)
             this.allMessages.push(e.message)
             setTimeout(this.scrollToEnd,100);
         });
