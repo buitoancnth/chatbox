@@ -182,4 +182,9 @@ class UserController extends Controller
                         ->with('success', 'Updated profile sucessfuly !');
     }
 
+    public function fetchUsers()
+    {
+        $users = User::whereNotIn('id', [auth()->user()->id])->get();
+        return $users;
+    }
 }

@@ -15,8 +15,8 @@ Broadcast::channel('App.User.{id}', function ($user, $id) {
     return (int) $user->id === (int) $id;
 });
 
-Broadcast::channel('chatbox_database_chatroom', function ($user) {
-    return [
-        'id' => $user->id
-    ];
-});
+// Broadcast::channel('chatbox_database_chatroom', function ($user) {
+//     return [
+//         'id' => $user->id
+//     ];
+// });

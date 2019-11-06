@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Message;
+use App\User;
 use App\Events\MessageSent;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Redis;
@@ -39,10 +40,26 @@ class MessageController extends Controller
         return response(['status'=>'Message Sent Successfully', 'message' => $message]);
     }
 
-    public function fetchUsers()
+    public function sendPrivateMessage(Request $request,User $user)
     {
-        $users = User::whereNotIn('id', [auth()->user()->id])->get();
-        return $users;
+        $input=$request->all();
+        $input['receiver_id']=$user->id;
+        $message=auth()->user()->messages()->create($input);
+        // if(request()->has('file')){
+        //     $filename = request('file')->store('chat');
+        //     $message=Message::create([
+        //         'user_id' => request()->user()->id,
+        //         'image' => $filename,
+        //         'receiver_id' => $user->id
+        //     ]);
+        // }else{
+        //     $input=$request->all();
+        //     $input['receiver_id']=$user->id;
+        //     $message=auth()->user()->messages()->create($input);
+        // }
+        broadcast(new MessageSent($message->load('user')))->toOthers();
+        
+        return response(['status'=>'Message private sent successfully','message'=>$message]);
     }
 
     /**

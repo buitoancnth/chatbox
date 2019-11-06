@@ -9,44 +9,15 @@
                     </tr>
                 </thead>
                 <tbody class="mr-5 ml-5">
-                    <tr class="chat-private">
-                        <td>adasdjasdjas</td>
-                    </tr>
-                    <tr class="chat-private">
-                        <td>adasdjasdjas</td>
-                    </tr>
-                    <tr class="chat-private">
-                        <td>adasdjasdjas</td>
-                    </tr>
-                    <tr class="chat-private">
-                        <td>adasdjasdjas</td>
-                    </tr>
-                    <tr class="chat-private">
-                        <td>adasdjasdjas</td>
-                    </tr>
-                    <tr class="chat-private">
-                        <td>adasdjasdjas</td>
-                    </tr>
-                    <tr class="chat-private">
-                        <td>adasdjasdjas</td>
-                    </tr>
-                    <tr class="chat-private">
-                        <td>adasdjasdjas</td>
-                    </tr>
-                    <tr class="chat-private">
-                        <td>adasdjasdjas</td>
-                    </tr>
-                    <tr class="chat-private">
-                        <td>adasdjasdjas</td>
-                    </tr>
-                    <tr class="chat-private">
-                        <td>adasdjasdjas</td>
-                    </tr>
-                    <tr class="chat-private">
-                        <td>adasdjasdjas</td>
-                    </tr>
-                    <tr class="chat-private">
-                        <td>adasdjasdjas</td>
+                    <tr v-for="friend in friends"
+                    class="chat-private"
+
+                    v-bind:style="{'background-color': (friend.id == activeFriend.id) ? 'green' : ''}"
+
+                    :key="friend.id"
+                    @click="activeFriend=friend.id"
+                    >
+                        <td>{{ friend.name }}</td>
                     </tr>
                 </tbody>
             </template>
@@ -65,144 +36,14 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr>
+                    <tr v-for="(message, index) in allMessages" :key="index">
                         <td class="text-left message-received">
                             <v-chip>
-                                <v-icon :color="red">mdi-account</v-icon>
-                                Chúng Ta là gia Đình 12321 
+                                <v-icon>mdi-account</v-icon>
+                                {{ message.message }} 
                             </v-chip>
                         </td>
                     </tr>
-                    <tr>
-                        <td class="text-left message-received">
-                            <v-chip>
-                                <v-icon :color="red">mdi-account</v-icon>
-                                Chúng Ta là gia Đình 12321 
-                            </v-chip>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td class="text-left message-received">
-                            <v-chip>
-                                <v-icon :color="red">mdi-account</v-icon>
-                                Chúng Ta là gia Đình 12321 
-                            </v-chip>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td class="text-left message-received">
-                            <v-chip>
-                                <v-icon :color="red">mdi-account</v-icon>
-                                Chúng Ta là gia Đình 12321 
-                            </v-chip>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td class="text-left message-received">
-                            <v-chip>
-                                <v-icon :color="red">mdi-account</v-icon>
-                                Chúng Ta là gia Đình 12321 
-                            </v-chip>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td class="text-right message-sent">
-                            <v-chip >
-                                <v-icon color="red">mdi-account</v-icon>
-                                Chúng Ta là gia Đình
-                            </v-chip>
-                        </td>
-                    </tr>
-
-                    <tr>
-                        <td class="text-right message-sent">
-                            <v-chip >
-                                <v-icon color="red">mdi-account</v-icon>
-                                Chúng Ta là gia Đình 123 Chúng Ta là gia Đình 123 Chúng Ta là gia Đình 123 Chúng Ta là gia Đình 123
-                            </v-chip>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td class="text-right message-sent">
-                            <v-chip >
-                                <v-icon color="red">mdi-account</v-icon>
-                                Chúng Ta là gia Đình 123 Chúng Ta là gia Đình 123 Chúng Ta là gia Đình 123 Chúng Ta là gia Đình 123
-                            </v-chip>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td class="text-right message-sent">
-                            <v-chip >
-                                <v-icon color="red">mdi-account</v-icon>
-                                Chúng Ta là gia Đình 123 Chúng Ta là gia Đình 123 Chúng Ta là gia Đình 123 Chúng Ta là gia Đình 123
-                            </v-chip>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td class="text-right message-sent">
-                            <v-chip >
-                                <v-icon color="red">mdi-account</v-icon>
-                                Chúng Ta là gia Đình 123 Chúng Ta là gia Đình 123 Chúng Ta là gia Đình 123 Chúng Ta là gia Đình 123
-                            </v-chip>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td class="text-right message-sent">
-                            <v-chip >
-                                <v-icon color="red">mdi-account</v-icon>
-                                Chúng Ta là gia Đình 123 Chúng Ta là gia Đình 123 Chúng Ta là gia Đình 123 Chúng Ta là gia Đình 123
-                            </v-chip>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td class="text-right message-sent">
-                            <v-chip >
-                                <v-icon color="red">mdi-account</v-icon>
-                                Chúng Ta là gia Đình 123 Chúng Ta là gia Đình 123 Chúng Ta là gia Đình 123 Chúng Ta là gia Đình 123
-                            </v-chip>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td class="text-right message-sent">
-                            <v-chip >
-                                <v-icon color="red">mdi-account</v-icon>
-                                Chúng Ta là gia Đình 123 Chúng Ta là gia Đình 123 Chúng Ta là gia Đình 123 Chúng Ta là gia Đình 123
-                            </v-chip>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td class="text-right message-sent">
-                            <v-chip >
-                                <v-icon color="red">mdi-account</v-icon>
-                                Chúng Ta là gia Đình 123 Chúng Ta là gia Đình 123 Chúng Ta là gia Đình 123 Chúng Ta là gia Đình 123
-                            </v-chip>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td class="text-right message-sent">
-                            <v-chip >
-                                <v-icon color="red">mdi-account</v-icon>
-                                Chúng Ta là gia Đình 123 Chúng Ta là gia Đình 123 Chúng Ta là gia Đình 123 Chúng Ta là gia Đình 123
-                            </v-chip>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td class="text-right message-sent">
-                            <v-chip >
-                                <v-icon color="red">mdi-account</v-icon>
-                                Chúng Ta là gia Đình 123 Chúng Ta là gia Đình 123 Chúng Ta là gia Đình 123 Chúng Ta là gia Đình 123
-                            </v-chip>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td class="text-right message-sent">
-                            <v-chip >
-                                <v-icon color="red">mdi-account</v-icon>
-                                Chúng Ta là gia Đình 123 Chúng Ta là gia Đình 123 Chúng Ta là gia Đình 123 Chúng Ta là gia Đình 123
-                            </v-chip>
-                        </td>
-                    </tr>
-
                 </tbody>
             </template>
         </v-simple-table>
@@ -235,7 +76,23 @@ export default {
         return {
             message: null,
             allMessages: [],
-            allUsers: [],
+            users: [],
+            activeFriend: null,
+            onlineFriends:[],
+        }
+    },
+
+    computed: {
+        friends(){
+            return this.users.filter((user)=>{
+                return user.id !==this.user.id;
+            });
+        }
+    },
+
+    watch: {
+        activeFriend(val){
+            this.fetchMessages();
         }
     },
 
@@ -245,9 +102,13 @@ export default {
                 return alert('please enter');
             }
 
+            if(!this.activeFriend){
+                return alert('Please select friend');
+            }
+
             // this.allMessages.push(this.message);
 
-            axios.post('/messages', {
+            axios.post('/private-messages/'+this.activeFriend, {
                 message: this.message
             }).then(response => {
                 this.message = null;
@@ -256,13 +117,20 @@ export default {
             });
         },
         fetchMessages() {
-            axios.get('/messages-private').then(response => {
+            if(!this.activeFriend){
+                return alert('Please select friend');
+            }
+            axios.get('/private-messages/'+this.activeFriend).then(response => {
                 this.allMessages = response.data;
+                setTimeout(this.scrollToEnd,100);
             });
         },
         fetchUsers(){
             axios.get('/fetchUsers').then(response => {
-                this.allUsers = response.data;
+                this.users = response.data;
+                if(this.friends.length>0){
+                  this.activeFriend=this.friends[0].id;
+                }
             });
         }
 
@@ -273,10 +141,11 @@ export default {
     },
 
     created() {
-        this.fetchMessages();
         this.fetchUsers();
-        Echo.channel('chatbox_database_chatroom')
+        Echo.channel('privatechat'+ this.activeFriend +'_database_chatroom')
             .listen('MessageSent', (e) => {
+                console.log('pmessage sent')
+                this.activeFriend=e.message.user_id;
                 this.allMessages.push(e.message)
                 setTimeout(this.scrollToEnd, 100);
             });
