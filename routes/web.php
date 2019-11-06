@@ -40,6 +40,9 @@ Route::group(['middleware' => ['auth']], function () {
 
     Route::get('messages', 'MessageController@fetchMessages');
     Route::post('messages', 'MessageController@sendMessages');
+    Route::get('fetchUsers', 'MessageController@fetchUsers');
+    Route::get('/private-messages/{user}', 'MessageController@privateMessages')->name('privateMessages');
+    Route::post('/private-messages/{user}', 'MessageController@sendPrivateMessage')->name('privateMessages.store');
 });
 
 // user profile

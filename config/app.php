@@ -163,6 +163,7 @@ return [
         Illuminate\View\ViewServiceProvider::class,
         Spatie\Permission\PermissionServiceProvider::class,
         QCod\ImageUp\ImageUpServiceProvider::class,
+        Barryvdh\Cors\ServiceProvider::class,
         
         /*
          * Package Service Providers...

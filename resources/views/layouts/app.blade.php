@@ -28,6 +28,7 @@
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     <link href="{{ asset('assets/css/common.css') }}" rel="stylesheet">
     <link href="{{ asset('assets/css/croppie.css') }}" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@mdi/font@4.x/css/materialdesignicons.min.css">
     <!-- bootstrap 4.x is supported. You can also use the bootstrap css 3.3.x versions -->
     @stack('head')
     @stack('photos-head')

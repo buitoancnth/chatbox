@@ -5,17 +5,31 @@ namespace App\Http\Controllers;
 use App\Message;
 use App\Events\MessageSent;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Redis;
 
 class MessageController extends Controller
 {
     public function fetchMessages(){
+        // $messages = Redis::get('messages.all');
         // if ($messages = Redis::get('messages.all')) {
         //     return json_decode($messages);
         // }
+
         return Message::get()->load('user');
         // Redis::set('messages.all', $messages);
 
         // return $message;
+    }
+
+    public function privateMessages(User $user)
+    {
+        $privateCommunication= Message::with('user')
+        ->where(['user_id'=> auth()->id(), 'receiver_id'=> $user->id])
+        ->orWhere(function($query) use($user){
+            $query->where(['user_id' => $user->id, 'receiver_id' => auth()->id()]);
+        })
+        ->get();
+        return $privateCommunication;
     }
 
     public function sendMessages(Request $request){
@@ -25,11 +39,18 @@ class MessageController extends Controller
         return response(['status'=>'Message Sent Successfully', 'message' => $message]);
     }
 
+    public function fetchUsers()
+    {
+        $users = User::whereNotIn('id', [auth()->user()->id])->get();
+        return $users;
+    }
+
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
+    
     public function index()
     {
         //

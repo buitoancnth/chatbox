@@ -10,6 +10,7 @@
     "require": {
         "php": "^7.2",
         "aws/aws-sdk-php": "^3.112",
+        "barryvdh/laravel-cors": "^0.11.4",
         "fideloper/proxy": "^4.0",
         "kreait/firebase-php": "4.0",
         "laravel/framework": "^6.0",

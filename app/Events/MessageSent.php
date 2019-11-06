@@ -38,6 +38,6 @@ class MessageSent implements ShouldBroadcast
     public function broadcastOn()
     {
         // return new PrivateChannel('dattingFFun');
-        return new Channel('chatroom');
+        return new PrivateChannel('chatroom');
     }
 }

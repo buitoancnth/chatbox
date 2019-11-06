@@ -181,4 +181,5 @@ class UserController extends Controller
         return redirect()->route('profile.index')
                         ->with('success', 'Updated profile sucessfuly !');
     }
+
 }
